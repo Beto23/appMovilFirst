@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mi pagina</title>
+	<link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+	<header class="header">
+		<div class="header-mobile">
+			<h1 class="header-logo">Logo</h1>
+			<button id="btnMenu" class="header-btn-nav">Menu</button>
+		</div>
+		<nav class="header-menu-navbar">
+			<ul id="navbarMenu" class="header-menu-list">
+				<li class="header-menu-list-item">
+					<a href="#">Inicio</a>
+				</li>
+				<li class="header-menu-list-item">
+					<a href="#">Acerca de</a>
+				</li>
+				<li class="header-menu-list-item">
+					<a href="#">Blog</a>
+				</li>
+				<li class="header-menu-list-item">
+					<a href="#">Contacto</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<script>
+		(function(){
+			var btnMenu = document.getElementById('btnMenu');
+
+			var navbarMenu = document.getElementById('navbarMenu')
+			btnMenu.addEventListener('click', onClickMenu);
+			function onClickMenu () {
+				navbarMenu.classList.toggle('header-menu-list--show')
+			}
+		})();
+	</script>
+</body>
+</html>
