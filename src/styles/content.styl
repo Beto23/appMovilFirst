@@ -6,6 +6,8 @@
 		padding 1em
 		border-left 6px solid #dedede
 		border-bottom 1px solid #dedede
+		&-title
+			font-family 'Raleway'
 		&:hover
 			background-color #dedede 
 		&:nth-child(1)
@@ -16,3 +18,29 @@
 			border-left-color blue
 		&:nth-child(4)
 			border-left-color orange
+	&-text
+		&-image
+			picture
+				margin 0 auto
+				img
+					width 100% 
+@media (min-width:768px)
+	.container
+		width 768px
+		margin 0 auto
+	.content
+		&-features
+			.container
+				display flex
+				justify-content space-between
+		&-text
+			&-image
+				.container
+					display flex
+					picture
+						margin 1em
+						order 1
+						width 30%
+					p
+						order 2
+						width 70% 

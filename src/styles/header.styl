@@ -1,4 +1,5 @@
 .header
+	font-family 'Raleway'
 	background $black
 	color $white
 	height 64px
@@ -7,6 +8,8 @@
 	left 0
 	right 0
 	z-index 10
+	&--light
+		background-color $white
 	&-mobile
 		display flex
 		justify-content space-between
@@ -22,6 +25,8 @@
 		border-radius 5px
 		background-color $black
 		margin-right 1rem
+		i
+			font-size 1.3em
 	&-menu-navbar
 		background-color $black
 	&-menu-list
@@ -31,6 +36,7 @@
 		transition height 0.3s ease
 		&--show
 			height 280px
+			border-top 1px solid gray
 		&-item
 			a
 				text-decoration none

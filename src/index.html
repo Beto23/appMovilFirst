@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-
 	<title>Mi pagina</title>
 	<link rel="stylesheet" href="./css/main.css">
 </head>
@@ -11,7 +10,9 @@
 	<header class="header">
 		<div class="header-mobile">
 			<h1 class="header-logo">Logo</h1>
-			<button id="btnMenu" class="header-btn-nav">Menu</button>
+			<button id="btnMenu" class="header-btn-nav">
+				<i class="fa fa-bars"></i>
+			</button>
 		</div>
 		<nav class="header-menu-navbar">
 			<ul id="navbarMenu" class="header-menu-list">
@@ -32,46 +33,50 @@
 	</header>
 	<article class="content">
 		<section class="content-text">
-			<div class="video-container">
-				<iframe 
-					width="560" 
-					height="315" 
-					src="https://www.youtube.com/embed/dU1xS07N-FA"
-					frameborder="0" 
-					allowfullscreen>
-				</iframe>
+			<div class="container">
+				<div class="video-container">
+					<iframe 
+						width="560" 
+						height="315" 
+						src="https://www.youtube.com/embed/dU1xS07N-FA"
+						frameborder="0" 
+						allowfullscreen>
+					</iframe>
+				</div>
+			</div>
+		</section>
+		<section class="content-features">
+			<div class="container">
+				<div class="content-block">
+					<h3 class="content-block-title">Feature 1</h3>
+					<p>Lorem Ipsum</p>
+				</div>
+				<div class="content-block">
+					<h3 class="content-block-title">Feature 2</h3>
+					<p>Lorem Ipsum</p>
+				</div>
+				<div class="content-block">
+					<h3 class="content-block-title">Feature 3</h3>
+					<p>Lorem Ipsum</p>
+				</div>
+				<div class="content-block">
+					<h3 class="content-block-title">Feature 4</h3>
+					<p>Lorem Ipsum</p>
+				</div>
+			</div>
+		</section>
+		<section class="content-text content-text-image">
+			<div class="container">
+				<picture>
+					<source media="(min-width: 768px)" srcset="img/img01-desktop.jpg">
+					<source media="(min-width: 768px)" srcset="img/img01-mobile-retina.jpg 2x">
+					<img src="img/img01-mobile.jpg">
+				</picture>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, eligendi est aspernatur similique nulla! Eum commodi culpa quibusdam numquam esse adipisci minus delectus, architecto ea sed tempore, autem iure laboriosam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates illo minima explicabo accusamus deserunt soluta eum saepe, cumque ipsam rerum, recusandae, repellendus culpa quibusdam doloremque nisi blanditiis tenetur, nam iste! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam quae, sed, odit in voluptates esse. Est tempora, blanditiis, fuga quae itaque, architecto corporis ducimus porro excepturi vitae et similique quisquam!</p>
 			</div>
 		</section>
 	</article>
 
-	<section class="content-features">
-		<div class="content-block">
-			<h3 class="content-block-title">Feature 1</h3>
-			<p>Lorem Ipsum</p>
-		</div>
-		<div class="content-block">
-			<h3 class="content-block-title">Feature 2</h3>
-			<p>Lorem Ipsum</p>
-		</div>
-		<div class="content-block">
-			<h3 class="content-block-title">Feature 3</h3>
-			<p>Lorem Ipsum</p>
-		</div>
-		<div class="content-block">
-			<h3 class="content-block-title">Feature 4</h3>
-			<p>Lorem Ipsum</p>
-		</div>
-	</section>
-	<script>
-		(function(){
-			var btnMenu = document.getElementById('btnMenu');
-
-			var navbarMenu = document.getElementById('navbarMenu')
-			btnMenu.addEventListener('click', onClickMenu);
-			function onClickMenu () {
-				navbarMenu.classList.toggle('header-menu-list--show')
-			}
-		})();
-	</script>
+	<script src="./js/bundle.js"></script>
 </body>
 </html>
