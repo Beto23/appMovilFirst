@@ -3,6 +3,10 @@ var webserver = require('gulp-webserver');
 var stylus = require('gulp-stylus');
 var nib = require('nib');
 var minifyCSS = require('gulp-minify-css');
+var browserify = require('browserify');
+var source = require ('vinyl-source-stream');
+var buffer = require ('vinyl-buffer');
+var uglify = require ('gulp-uglify');
 
 var config = {
 	styles:{
@@ -14,6 +18,11 @@ var config = {
 		main: './src/index.html',
 		watch: './src/*.html',
 		output: './build'
+	},
+	scripts:{
+		main:'./src/scripts/main.js',
+		watch: './src/scripts/**/*.js',
+		output: './build/js'
 	}
 }
 
@@ -41,11 +50,21 @@ gulp.task('build:html', function(){
 		.pipe(gulp.dest(config.html.output));
 });
 
+gulp.task('build:js', function(){
+	return browserify(config.scripts.main)
+	.bundle()
+	.pipe(source('bundle.js'))
+	.pipe(buffer())
+	.pipe(uglify())
+	.pipe(gulp.dest(config.scripts.output))
+	})
+
 gulp.task('watch', function(){
+	gulp.watch(config.scripts.watch, ['build:js']);
 	gulp.watch(config.html.watch, ['build:html', 'build']);
 	gulp.watch(config.styles.watch, ['build:css']);
 	})
 
-gulp.task('build', ['build:css', 'build:html'])
+gulp.task('build', ['build:css', 'build:html', 'build:js']);
 
 gulp.task('default', ['server', 'watch' ,'build']);
