@@ -6,66 +6,8 @@ $white = #FAFAFA
 	outline none
 body
 	font-style 16px
-.header
-	background $black
-	color $white
-	height 64px
-	position fixed
-	top 0
-	left 0
-	right 0
-	z-index 10
-	&-mobile
-		display flex
-		justify-content space-between
-		height inherit
-		align-items center
+@import './header'
+@import './content'
+@import './video'
 
-	&-logo
-		order 1
-		margin-left 1rem
-	&-btn-nav
-		order 2
-		border 0
-		border-radius 5px
-		background-color $black
-		margin-right 1rem
-	&-menu-navbar
-		background-color $black
-	&-menu-list
-		list-style none
-		height 0
-		overflow hidden
-		transition height 0.3s ease
-		&--show
-			height 280px
-		&-item
-			a
-				text-decoration none
-				color $white
-				width 100%
-				padding 1.5rem
-				display block
 
-@media (min-width:768px)
-	.header
-		display flex
-		flex-direction flow
-		flex-wrap wrap
-		justify-content space-between
-		height 80px
-		transition all .3s ease
-		&-btn-nav
-			display none
-		&-menu-navbar
-			width 65%
-		&-menu-list
-			height 80px
-			display flex
-			flex-direction row
-			flex-wrap wrap
-			justify-content space-around
-			align-items center
-			&-item
-				a
-					padding 0
