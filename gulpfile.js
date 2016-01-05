@@ -74,16 +74,6 @@ gulp.task('build:js', function(){
 	.pipe(gulp.dest(config.scripts.output))
 	});
 
-gulp.task('images', function() {
-  gulp.src(config.images.watch)
-    .pipe(imageop({
-      optimizationLevel: 5,
-      progressive: true,
-      interlaced: true
-    }))
-    .pipe(gulp.dest(config.images.output));
-});
-
 gulp.task('build:html', function(){
 	gulp.src(config.html.main)
 		//.pipe(smoosher())
