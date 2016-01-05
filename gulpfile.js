@@ -29,6 +29,9 @@ var config = {
 	images:{
 		watch: ['./src/img/*.jpg', './src/img/*.png'],
 		output: './build/img'
+	},
+	inline:{
+		watch: './build/index.html'
 	}
 }
 
@@ -51,10 +54,6 @@ gulp.task('build:css', function(){
 		.pipe(gulp.dest(config.styles.output));
 });
 
-gulp.task('build:html', function(){
-	gulp.src(config.html.main)
-		.pipe(gulp.dest(config.html.output));
-});
 
 gulp.task('images', function(){
 	gulp.src(config.images.watch)
@@ -73,15 +72,27 @@ gulp.task('build:js', function(){
 	.pipe(buffer())
 	.pipe(uglify())
 	.pipe(gulp.dest(config.scripts.output))
-	})
+	});
+
+gulp.task('build:html', function(){
+	gulp.src(config.html.main)
+		//.pipe(smoosher())
+		.pipe(gulp.dest(config.html.output));
+});
+gulp.task('inline', function() {
+	gulp.src('./build/index.html')
+		.pipe(smoosher())
+		.pipe(gulp.dest(config.html.output));
+});
 
 gulp.task('watch', function(){
 	gulp.watch(config.images.watch, ['images']);
 	gulp.watch(config.scripts.watch, ['build:js']);
-	gulp.watch(config.html.watch, ['build:html', 'build']);
+	gulp.watch(config.html.watch, ['build:html']);
+	gulp.watch(config.inline.watch, ['inline']);
 	gulp.watch(config.styles.watch, ['build:css']);
 	})
 
-gulp.task('build', ['build:css', 'build:html', 'build:js', 'images']);
+gulp.task('build', ['build:css', 'build:html', 'build:js', 'images', 'inline']);
 
 gulp.task('default', ['server', 'watch' ,'build']);
