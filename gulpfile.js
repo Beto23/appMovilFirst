@@ -23,6 +23,10 @@ var config = {
 		main:'./src/scripts/main.js',
 		watch: './src/scripts/**/*.js',
 		output: './build/js'
+	},
+	images:{
+		watch: ['./src/img/*.jpg', './src/img/*.png'],
+		output: './build/img'
 	}
 }
 
@@ -50,6 +54,11 @@ gulp.task('build:html', function(){
 		.pipe(gulp.dest(config.html.output));
 });
 
+gulp.task('images', function(){
+	gulp.src(config.images.watch)
+		.pipe(gulp.dest(config.images.output));
+	});
+
 gulp.task('build:js', function(){
 	return browserify(config.scripts.main)
 	.bundle()
@@ -60,11 +69,12 @@ gulp.task('build:js', function(){
 	})
 
 gulp.task('watch', function(){
+	gulp.watch(config.images.watch, ['images']);
 	gulp.watch(config.scripts.watch, ['build:js']);
 	gulp.watch(config.html.watch, ['build:html', 'build']);
 	gulp.watch(config.styles.watch, ['build:css']);
 	})
 
-gulp.task('build', ['build:css', 'build:html', 'build:js']);
+gulp.task('build', ['build:css', 'build:html', 'build:js', 'images']);
 
 gulp.task('default', ['server', 'watch' ,'build']);
