@@ -7,6 +7,8 @@ var browserify = require('browserify');
 var source = require ('vinyl-source-stream');
 var buffer = require ('vinyl-buffer');
 var uglify = require ('gulp-uglify');
+var imgop = require ('gulp-image-optimization');
+var smoosher = require ('gulp-smoosher');
 
 var config = {
 	styles:{
@@ -56,6 +58,11 @@ gulp.task('build:html', function(){
 
 gulp.task('images', function(){
 	gulp.src(config.images.watch)
+		.pipe(imgop({
+			optimizationLevel: 5,
+			progressive: true,
+			interlaced: true
+			}))
 		.pipe(gulp.dest(config.images.output));
 	});
 
